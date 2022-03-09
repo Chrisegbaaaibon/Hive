@@ -23,10 +23,10 @@ const bee = require('../database/schema')
             message: "Added!🚀🚀",
             data: emailCreated
          })
-         res.json({
-            status: "200",
-            data: emailCreated
-         })
+         // res.json({
+         //    status: "200",
+         //    data: emailCreated
+         // })
       }
     } catch (error) {
       console.log(error); 
