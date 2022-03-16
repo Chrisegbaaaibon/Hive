@@ -9,5 +9,4 @@ router.use((req, res, next) => {
 
 router.post("/addEmail", AddEmail);
 router.get("/emails", GetEmails);
-router.get("/mail", sendMails)
 module.exports = router;
