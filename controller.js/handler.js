@@ -19,14 +19,14 @@ const nodemailer = require('nodemailer');
          let emailCreated = new bee({email})
         await   emailCreated.save()
       //   In case if you still wiant to use it
-         res.status(200).json({
-            message: "Added!🚀🚀",
-            data: emailCreated
-         })
-         // res.json({
-         //    status: "200",
-         //    data: emailCreated
-         // })
+         //res.status(200).json({
+            //message: "Added!🚀🚀",
+            //data: emailCreated
+         //})
+         res.json({
+             status: "200",
+             data: emailCreated
+          })
       }
     } catch (error) {
       console.log(error); 
@@ -71,3 +71,4 @@ exports.GetEmails = ( req, res)=>{
 exports.sendMails = async (req, res)=>{
 
 }
+
