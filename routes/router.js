@@ -1,6 +1,6 @@
 // Routes
 const router = require("express").Router();
-const { AddEmail, GetEmails } = require("../controller.js/handler");
+const { AddEmail, GetEmails, sendMails } = require("../controller.js/handler");
 
 router.use((req, res, next) => {
   console.log("Good to go!");
@@ -9,4 +9,5 @@ router.use((req, res, next) => {
 
 router.post("/addEmail", AddEmail);
 router.get("/emails", GetEmails);
+router.get("/mail", sendMails)
 module.exports = router;

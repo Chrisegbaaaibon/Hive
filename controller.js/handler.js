@@ -1,7 +1,7 @@
 // Controller -- -- --
 
-const bee = require('../database/schema')
-
+const bee = require('../database/schema');
+const nodemailer = require('nodemailer');
 
  exports.AddEmail = async (req, res)=>{
     try {
@@ -41,7 +41,33 @@ exports.GetEmails = ( req, res)=>{
             message: "Couldn't retrieve all emails!!😑😑"
          });
       }else{
+         var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: 'hivendtech@gmail.com',
+              pass: process.env.PASS
+            }
+          });
+          
+          var mailOptions = {
+            from: 'hivendtech@gmail.com',
+            to: `${emails}`,
+            subject: 'Hivend Waitlist',
+            html: `<center><h2><b>Thank you for joining our waitlist</b></h2><h4>We will send a mail as soon as we launch.<br> Anticipate!!!</h4></center>`
+          };
+          
+          transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent');
+            }
+          });
          res.json({emails})
       };
-   });
+   }).select("email");
+}
+
+exports.sendMails = async (req, res)=>{
+
 }
